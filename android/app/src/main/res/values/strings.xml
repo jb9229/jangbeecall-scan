@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">jangbeecall-scan</string>
+    <string name="btn_show_blacklist">자세한 내용 확인하기</string>
+</resources>

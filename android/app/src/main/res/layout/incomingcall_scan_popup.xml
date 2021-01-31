@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="340dp"
+    android:layout_height="wrap_content"
+    android:background="#3E3936"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="103dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/inco_scan_callnumber"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textColor="#FAC682"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start"
+            android:background="#FAC682"
+            android:contentDescription="닫기 버튼"
+            android:scaleType="fitEnd"
+            android:src="@drawable/ic_clear_blue" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_show_blacklist"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:background="#FAC682"
+        android:text="@string/btn_show_blacklist"
+        android:textStyle="bold" />
+
+</LinearLayout>
