@@ -1,12 +1,20 @@
 {
-  "name": "jangbeecall-scan",
-  "displayName": "jangbeecall-scan",
+  "name": "장비 콜(필터)",
+  "displayName": "장비 콜(필터)",
   "expo": {
     "name": "jangbeecall-scan",
     "slug": "jangbeecall-scan",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.kan.jangbeecall.scan",
+      "useNextNotificationsApi": true,
+      "splash": {
+        "backgroundColor": "#4D4A4A",
+        "resizeMode": "cover"
+      }
+    }
   }
 }

@@ -27,12 +27,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 import android.widget.Button;
 import android.widget.Toast;
@@ -47,15 +41,6 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.jangbeecallscan.MainActivity;
 import com.jangbeecallscan.R;
 import com.jangbeecallscan.utils.AppStatusHelper;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class IncomingCallBLPopupService extends Service {
     // Variables
@@ -149,7 +134,7 @@ public class IncomingCallBLPopupService extends Service {
                     Intent appStartIntent = new Intent(getApplicationContext(), MainActivity.class);
                     appStartIntent.putExtra("BLACKLIST_LAUNCH", incomingCallNumber);
                     startActivity(appStartIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                    if (AppStatusHelper.isAppRunning(getApplicationContext(), "com.kan.jangbeecall.scan")) {
+                    if (AppStatusHelper.isAppRunning(getApplicationContext(), "com.kan.jangbeecall")) {
                         // App is running
                         Toast.makeText(context, "App is running", Toast.LENGTH_LONG).show();
                         try {

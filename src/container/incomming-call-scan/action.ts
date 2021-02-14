@@ -1,12 +1,12 @@
 import { NativeModules } from 'react-native';
 
-export const checkBLScanServiceRunning = (): boolean | null => {
+export const checkBLScanServiceRunning = (callback: (isScaning: boolean) => void): void => {
   const { CallDetection } = NativeModules;
 
-  if (!!!CallDetection) { return null }
+  if (!!!CallDetection) { return }
 
   return CallDetection.isRunningService(
-    (isRunning: boolean) => isRunning,
+    callback,
     (errorMsg: string) => { alert(`[수신전화 피해사례조회 권한 설정 필요] ${errorMsg}`); return undefined }
   );
 };

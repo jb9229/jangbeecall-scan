@@ -10,6 +10,7 @@ import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -52,7 +53,20 @@ public class CallDetectionJobService extends JobService {
           @Override
           public void onResponse(Call call, Response response) throws IOException {
               String result   = response.body().string();
-              if (result != null && !result.isEmpty() && Boolean.parseBoolean(result)) {
+              JSONObject jResult = null;
+              JSONObject firmHarmCase = null;
+              try {
+                  jResult = new JSONObject(result);
+                  if (jResult == null) { return; }
+                  JSONObject queryData = (JSONObject)jResult.get("data");
+                  firmHarmCase = (JSONObject)queryData.get("firmHarmCase");
+              } catch (ClassCastException e) {
+                  e.printStackTrace();
+              } catch (JSONException e) {
+                  e.printStackTrace();
+              }
+
+              if (jResult != null && firmHarmCase != null) {
                   String blResult = PhoneNumberUtils.formatNumber(phoneNumber);
 //
 //                    Intent appStartIntent = new Intent(getApplicationContext(), MainActivity.class);
@@ -69,8 +83,8 @@ public class CallDetectionJobService extends JobService {
           }
       };
 
-      //getHttpAsync("https", "jangbeecall-dev.azurewebsites.net/graphql", phoneNumber, httpCallBack);
-      getHttpAsync("http", "10.0.2.2:4000", phoneNumber, httpCallBack);
+      getHttpAsync("https", "jangbeecall-dev.azurewebsites.net", phoneNumber, httpCallBack);
+//      getHttpAsync("http", "10.0.2.2", phoneNumber, httpCallBack);
 
       return false;
   }
@@ -90,12 +104,14 @@ public class CallDetectionJobService extends JobService {
           HttpUrl.Builder builder = new HttpUrl.Builder();
           builder.scheme(scheme);
           builder.host(host);
+//          builder.port(4000);
+          builder.addPathSegment("graphql");
 
 //            parameterData.forEach((k, v) -> builder.addQueryParameter(k, v)); // from API24
           JSONObject jsonInput = new JSONObject();
-          StringBuilder queryBuilder =  new StringBuilder("query { firmHarmCase(telNumber:\\\"");
+          StringBuilder queryBuilder =  new StringBuilder("query { firmHarmCase(telNumber:\"");
           queryBuilder.append(phoneNumber);
-          queryBuilder.append("\\\") { accountId cliName } }");
+          queryBuilder.append("\") { accountId cliName } }");
 
           jsonInput.put("query", queryBuilder.toString());
 
