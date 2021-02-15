@@ -59,7 +59,7 @@ const IncommingCallScanContainer:React.FC = (): React.ReactElement =>
           style={{ backgroundColor: running ? colors.primary : colors.disabled }}
         />
       </ButtonWrap>
-      <Title>{running? `수신전화 피해사례 알림 중` : `수신전화 피해사례 알림 끔`}</Title>
+      <Title>{running? `수신전화 피해사례 알림 켜짐` : `수신전화 피해사례 알림 꺼짐`}</Title>
     </Container>
   );
 };

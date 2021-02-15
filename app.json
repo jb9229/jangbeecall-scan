@@ -1,8 +1,8 @@
 {
-  "name": "장비 콜(필터)",
-  "displayName": "장비 콜(필터)",
+  "name": "장비 콜-스캔",
+  "displayName": "장비 콜-스캔",
   "expo": {
-    "name": "jangbeecall-scan",
+    "name": "장비 콜-스캔",
     "slug": "jangbeecall-scan",
     "version": "1.0.0",
     "assetBundlePatterns": [
