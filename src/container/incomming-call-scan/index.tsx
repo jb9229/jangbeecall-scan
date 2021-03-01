@@ -17,6 +17,7 @@ const CallScanToggleButton = styled(ToggleButton)`
 const ButtonWrap = styled.View`
   width: 250px;
   height: 250px;
+  margin-bottom: 30px;
   border-radius: 125px;
   shadow-offset: 0px 2px;
   shadow-color: #000;
